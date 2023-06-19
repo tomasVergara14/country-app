@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
 })
 export class ByCapitalPageComponent {
 
+  public onSearchByCapital( term: string ):void{
+    console.log('from by capital page')
+    console.log(term)
+  }
 
 }
