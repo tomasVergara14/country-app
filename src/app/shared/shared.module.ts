@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+
+//Components
 import { AboutPageComponent } from './pages/about-page/about-page.component';
-import { HomePageComponent } from './pages/home-page/home-page.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { SearchBoxComponent } from './components/search-box/search-box.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 
 
@@ -14,6 +17,7 @@ import { ContactPageComponent } from './pages/contact-page/contact-page.componen
     AboutPageComponent,
     ContactPageComponent,
     HomePageComponent,
+    SearchBoxComponent,
     SidebarComponent,
   ],
   imports: [
@@ -24,6 +28,7 @@ import { ContactPageComponent } from './pages/contact-page/contact-page.componen
     AboutPageComponent,
     ContactPageComponent,
     HomePageComponent,
+    SearchBoxComponent,
     SidebarComponent,
   ]
 })
