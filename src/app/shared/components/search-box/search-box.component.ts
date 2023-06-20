@@ -6,12 +6,12 @@ import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@
   styleUrls: ['./search-box.component.scss']
 })
 export class SearchBoxComponent {
+  
+  @Input()
+  public placeholder: string = '';
 
   @ViewChild('txtSearch')
   public newInput!:ElementRef<HTMLInputElement>;
-
-  @Input()
-  public placeholder: string = '';
 
   @Output()
   public onValue: EventEmitter<string> = new EventEmitter;
