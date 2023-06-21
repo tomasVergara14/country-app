@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 
 //Interfaces
 import { Country } from '../interfaces/country';
@@ -15,8 +15,14 @@ export class CountriesService {
   public apiUrl: string = 'https://restcountries.com/v3.1'
 
   public onSearchCapital( term: string): Observable<Country[]> {
-    const url = '/capital/' + term
-    return this.http.get<Country[]>(`${this.apiUrl}${url}`)
+    const url = `${this.apiUrl}/capital/${term}`
+    return this.http.get<Country[]>(url)
+    .pipe(
+      catchError(error => {
+        console.log(error)
+        return of([]);
+      })
+    )
   }
   
 }
