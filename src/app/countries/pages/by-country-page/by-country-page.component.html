@@ -1,1 +1,19 @@
-<p>by-country-page works!</p>
+<h2>By Country</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <!-- Search box -->
+        Search
+        <shared-search-box 
+            placeholder="Search by Country"
+            (onValue)="onSearchByCountry($event)"></shared-search-box>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <countries-table [countries]="countries" ></countries-table>
+        <!-- Results -->
+    </div>
+</div>
