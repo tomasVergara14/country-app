@@ -20,15 +20,9 @@ export class CountryPageComponent implements OnInit {
     .pipe(
       switchMap( ({ id }) => this.countriesService.onSearchCountry( id ) )
     )
-    .subscribe( resp =>{                                       // Reacciona a cambios en los parametros de la ruta  
+    .subscribe( resp =>{                                       // Recibe ya la info procesada por el metodo y devuelve o null o un pais
 
       console.log( resp )
-      // this.countriesService.onSearchCountry( id )
-
-      // .subscribe( alphaCountry => { //Un subscribe dentro de otro
-      //   console.log(alphaCountry)
-
-      // })
 
     })
   }
