@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CountriesService } from '../../services/countries.service';
 import { catchError, switchMap, of } from 'rxjs';
+import { Country } from '../../interfaces/country';
 
 @Component({
   selector: 'countries-country-page',
@@ -9,6 +10,8 @@ import { catchError, switchMap, of } from 'rxjs';
   styleUrls: ['./country-page.component.scss']
 })
 export class CountryPageComponent implements OnInit {
+
+  public country?: Country                              // Al principio es null por eso '?'
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -24,11 +27,9 @@ export class CountryPageComponent implements OnInit {
     )
     .subscribe( country =>{                                    // Recibe ya la info procesada por el metodo y devuelve o null o un pais
       
-      if(!country){
-        return this.router.navigateByUrl('');
-      }
-      console.log('We have a country')
-      return;
+      if(!country) return this.router.navigateByUrl('');
+
+      return this.country = country;
 
     })
   }
