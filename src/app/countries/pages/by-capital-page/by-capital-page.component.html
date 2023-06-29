@@ -13,7 +13,7 @@
 
 <div class="row">
     <div class="col">
-        <shared-loading></shared-loading>
+        <shared-loading *ngIf="isLoading" ></shared-loading>
         <countries-table [countries]="countries" ></countries-table>
         <!-- Results -->
     </div>

@@ -14,10 +14,18 @@ export class ByCapitalPageComponent {
   ){}
 
   public countries:Country[] = [];
+  public isLoading: boolean = false;
 
   public onSearchByCapital( term: string ):void{
-    this.countriesService.onSearchRestCountries('capital',term).subscribe( countries=>{
+
+    this.isLoading = true;
+
+    this.countriesService.onSearchRestCountries('capital',term)
+    .subscribe( countries=>{
+
       this.countries = countries;
+      this.isLoading = false;
+
     })
   }
 
