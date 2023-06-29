@@ -27,6 +27,7 @@ export class CountriesService {
       })
     )
   }
+  
   public onSearchRestCountries( parameter: string ,term: string): Observable<Country[]> {
     const url = `${this.apiUrl}/${parameter}/${term}`
     return this.http.get<Country[]>(url)
