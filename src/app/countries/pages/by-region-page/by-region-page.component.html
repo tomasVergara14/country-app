@@ -2,18 +2,20 @@
 <hr>
 
 <div class="row">
-    <div class="col">
-        <!-- Search box -->
-        Search
-        <shared-search-box 
-            placeholder="Search by Region"
-            (onValue)="onSearchByRegion($event)"></shared-search-box>
+    <div class="col mb-4">
+        <ul class="nav nav-pills d-flex justify-content-around">
+            <li class="nav-item" *ngFor="let region of regions" >
+                <button 
+                class="nav-link" 
+                [ngClass]="{active: selectedRegion === region}" 
+                (click)="onSearchByRegion(region)"> {{ region }} </button>
+            </li>
+        </ul>
     </div>
 </div>
 
 <div class="row">
     <div class="col">
         <countries-table [countries]="countries" ></countries-table>
-        <!-- Results -->
     </div>
 </div>
