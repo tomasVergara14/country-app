@@ -28,6 +28,7 @@ export class ByCountryPageComponent implements OnInit {
     this.countriesService.onSearchRestCountries(term).subscribe( countries=>{
       this.isLoading = false;
       this.countries = countries;
+      this.termSearched = term;
     })
   }
 
