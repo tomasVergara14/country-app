@@ -1,3 +1,4 @@
+
 <div 
     class="alert alert-warning text-center"
     *ngIf="countries.length === 0; else table">
@@ -5,27 +6,27 @@
 </div>
 
 <ng-template #table>
-    <table class="table table-hover">
+    <table class="table table-hover table-results">
         <thead>
             <tr>
-                <th># </th>
-                <th>Icon </th>
-                <th>Flags </th>
-                <th>Name </th>
-                <th>Capital </th>
-                <th>Population</th>
-                <th></th>
+                <th class="bg-transparent text-light"># </th>
+                <th class="bg-transparent text-light">Icon </th>
+                <th class="bg-transparent text-light">Flags </th>
+                <th class="bg-transparent text-light">Name </th>
+                <th class="bg-transparent text-light">Capital </th>
+                <th class="bg-transparent text-light">Population</th>
+                <th class="bg-transparent text-light"></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let country of countries, let i = index">
-                <td> {{ i + 1 }} </td>
-                <td> {{ country.flag }} </td>
-                <td> <img [src]="country.flags.svg" [alt]="country.name.common"> </td>
-                <td> {{ country.name.common }} </td>
-                <td> {{ country.capital }} </td>
-                <td> {{ country.population }} </td>
-                <td> <a [routerLink]="['/countries/by', country.cca3 ]" routerLinkActive="router-link-active" >See more</a> </td>
+                <td class="bg-transparent text-light"> {{ i + 1 }} </td>
+                <td class="bg-transparent text-light"> {{ country.flag }} </td>
+                <td class="bg-transparent text-light"> <img [src]="country.flags.svg" [alt]="country.name.common"> </td>
+                <td class="bg-transparent text-light"> {{ country.name.common }} </td>
+                <td class="bg-transparent text-light"> {{ country.capital }} </td>
+                <td class="bg-transparent text-light"> {{ country.population }} </td>
+                <td class="bg-transparent text-light"> <a [routerLink]="['/countries/by', country.cca3 ]" routerLinkActive="router-link-active" >See more</a> </td>
             </tr>
         </tbody>
     </table>
