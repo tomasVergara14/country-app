@@ -12,7 +12,9 @@ export class CountriesService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    this.getLocalStorage();
+  }
 
   public cacheStore :CacheStore ={
     byCapital:{ term: '', countries: []},
@@ -23,13 +25,13 @@ export class CountriesService {
   public apiUrl: string = 'https://restcountries.com/v3.1'
 
   private saveToLocalStorage (): void{
-    localStorage.setItem('cacheStore', JSON.stringify(this.cacheStore))
+    localStorage.setItem('cacheStore', JSON.stringify(this.cacheStore));
   }
 
   private getLocalStorage(){
     if(!localStorage.getItem('cacheStore')) return;
 
-    this.cacheStore = JSON.parse(localStorage.getItem('cacheStore')!)
+    this.cacheStore = JSON.parse(localStorage.getItem('cacheStore')!);
   }
 
   public onSearchCountry( term: string): Observable<Country | null> {                       // queremos devolver solo un pais, no el array, puede que no exista
@@ -43,7 +45,7 @@ export class CountriesService {
         console.log(error)
         return of(null);
       })
-    )
+    );
   }
   
   public onSearchRestCountries( term: string): Observable<Country[]> {
@@ -51,12 +53,12 @@ export class CountriesService {
     return this.http.get<Country[]>(url)
     .pipe(
       tap( countries => this.cacheStore.byCountry = { term: term, countries: countries }),
-      tap( ()=> this.saveToLocalStorage),
+      tap( ()=> this.saveToLocalStorage()),
       catchError(error => {
         console.log(error)
         return of([]);
       })
-    )
+    );
   }
   
   public onSearchCapitalCountries(term: string): Observable<Country[]> {
@@ -64,7 +66,7 @@ export class CountriesService {
     return this.http.get<Country[]>(url)
     .pipe(
       tap( countries => this.cacheStore.byCapital = { term: term, countries: countries }),
-      tap( ()=> this.saveToLocalStorage),
+      tap( ()=> this.saveToLocalStorage()),
       catchError(error => {
         console.log(error)
         return of([]);
@@ -77,13 +79,12 @@ export class CountriesService {
     return this.http.get<Country[]>(url)
     .pipe(
       tap( countries => this.cacheStore.byRegion = { region: region, countries: countries }),
-      tap( ()=> this.saveToLocalStorage),
+      tap( ()=> this.saveToLocalStorage()),
       catchError(error => {
         console.log(error)
         return of([]);
       })
-    )
+    );
   }
 
-  
 }
