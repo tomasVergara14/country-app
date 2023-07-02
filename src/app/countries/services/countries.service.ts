@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map ,catchError, of } from 'rxjs';
+import { Observable, map ,catchError, of, tap } from 'rxjs';
 
 //Interfaces
 import { Country } from '../interfaces/country';
+import { CacheStore } from '../interfaces/cache-store';
+import { Region } from '../pages/by-region-page/by-region-page.component';
 
 @Injectable({providedIn: 'root'})
 export class CountriesService {
@@ -11,6 +13,12 @@ export class CountriesService {
   constructor(
     private http: HttpClient
   ) { }
+
+  public cacheStore :CacheStore ={
+    byCapital:{ term: '', countries: []},
+    byCountry:{term: '', countries: []},
+    byRegion:{region:'', countries: []}
+  }
 
   public apiUrl: string = 'https://restcountries.com/v3.1'
 
@@ -28,10 +36,35 @@ export class CountriesService {
     )
   }
   
-  public onSearchRestCountries( parameter: string ,term: string): Observable<Country[]> {
-    const url = `${this.apiUrl}/${parameter}/${term}`
+  public onSearchRestCountries( term: string): Observable<Country[]> {
+    const url = `${this.apiUrl}/name/${term}`
     return this.http.get<Country[]>(url)
     .pipe(
+      tap( countries => this.cacheStore.byCountry = { term: term, countries: countries }),
+      catchError(error => {
+        console.log(error)
+        return of([]);
+      })
+    )
+  }
+  
+  public onSearchCapitalCountries(term: string): Observable<Country[]> {
+    const url = `${this.apiUrl}/capital/${term}`
+    return this.http.get<Country[]>(url)
+    .pipe(
+      tap( countries => this.cacheStore.byCapital = { term: term, countries: countries }),
+      catchError(error => {
+        console.log(error)
+        return of([]);
+      })
+    )
+  }
+  
+  public onSearchRegionCountries( region: Region): Observable<Country[]> {
+    const url = `${this.apiUrl}/region/${region}`
+    return this.http.get<Country[]>(url)
+    .pipe(
+      tap( countries => this.cacheStore.byRegion = { region: region, countries: countries }),
       catchError(error => {
         console.log(error)
         return of([]);

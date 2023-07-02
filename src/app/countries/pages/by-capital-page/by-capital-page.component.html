@@ -11,6 +11,12 @@
     </div>
 </div>
 
+<ng-container *ngIf="termSearched">
+    <div class="m-2">
+        <span>Results: {{ termSearched }} </span>
+    </div>
+</ng-container>
+
 <div class="row">
     <div class="col">
         <shared-loading *ngIf="isLoading" ></shared-loading>

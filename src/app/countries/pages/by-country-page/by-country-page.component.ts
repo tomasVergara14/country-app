@@ -16,7 +16,7 @@ export class ByCountryPageComponent {
   public countries:Country[] = [];
 
   public onSearchByCountry( term: string ):void{
-    this.countriesService.onSearchRestCountries('name',term).subscribe( countries=>{
+    this.countriesService.onSearchRestCountries(term).subscribe( countries=>{
       this.countries = countries;
     })
   }
