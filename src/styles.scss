@@ -1,8 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
-html,
-body{
-    height: 100%,
-}
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+    --fs--2: clamp(0.78rem, calc(0.69rem + 0.47vw), 1.44rem);
+    --fs--1: clamp(0.94rem, calc(0.82rem + 0.62vw), 1.80rem);
+    --fs-0: clamp(1.13rem, calc(0.97rem + 0.80vw), 2.25rem);
+    --fs-1: clamp(1.35rem, calc(1.14rem + 1.04vw), 2.81rem);
+    --fs-2: clamp(1.62rem, calc(1.35rem + 1.35vw), 3.52rem);
+    --fs-3: clamp(1.94rem, calc(1.60rem + 1.75vw), 4.39rem);
+    --fs-4: clamp(2.33rem, calc(1.88rem + 2.26vw), 5.49rem);
+    --fs-5: clamp(2.80rem, calc(2.22rem + 2.90vw), 6.87rem);
+}
+
+html,
+body{
+    height: 100%;
+}
+h2{
+    font-size: var(--fs-2)
+}
+
