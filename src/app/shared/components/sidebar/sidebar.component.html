@@ -1,26 +1,26 @@
-<section class="vh-100 vsh-100 vh-md-auto d-flex flex-column justify-content-center align-items-center">
+<section class="d-flex flex-column justify-content-center align-items-center">
 
     <h2 class="text-center flex-start mb-auto mt-2 mb-md-2 mt-md-0">REST COUNTRIES</h2>
     <br>
-    <ul class="list-group mb-auto mr-md-auto">
+    <ul class="flex-row flex-md-column list-group p-2">
         
         <li 
             routerLink="countries/by-capital" 
             routerLinkActive="active"
-            class="list-group-item bg-transparent border-0 text-center mb-3 border-bottom">
-            <h4 class="p-3" >By Capital</h4>
-        </li>
-        <li 
-            routerLink="countries/by-region" 
-            routerLinkActive="active"
-            class="list-group-item bg-transparent border-0 text-center mb-3 border-bottom">
-            <h4 class="p-3" >By Region</h4>
+            class="list-group-item bg-transparent border-0 text-center m-1 border-bottom">
+            <span>By Capital</span>
         </li>
         <li 
             routerLink="countries/by-country" 
             routerLinkActive="active"
-            class="list-group-item bg-transparent border-0 text-center mb-3 border-bottom">
-            <h4 class="p-3">By Country</h4>
+            class="list-group-item bg-transparent border-0 text-center m-1 border-bottom">
+            <span>By Country</span>
+        </li>
+        <li 
+            routerLink="countries/by-region" 
+            routerLinkActive="active"
+            class="list-group-item bg-transparent border-0 text-center m-1 border-bottom">
+            <span>By Region</span>
         </li>
     </ul>
 </section>
