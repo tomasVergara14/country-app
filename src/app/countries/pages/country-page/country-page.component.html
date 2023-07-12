@@ -14,9 +14,9 @@
     <hr>
 
     <div class="row">
-        <div class="col-4">
+        <div class="col-sm-10 col-md-4">
             <h3>Flag</h3>
-            <img [src]="country.flags.svg" [alt]="country.name.common" class="img-thumbnail">
+            <img [src]="country.flags.svg" [alt]="country.name.common" class="img-thumbnail border-0 bg-transparent">
         </div>
         <div class="col">
             <h3>Information</h3>
@@ -34,10 +34,10 @@
     <div class="row mt-2">
         <div class="col">
             <h3>Translates</h3>
-            <div class="d-flex flex-wrap">
-                <span class="bagde bg-primary ml-1 text-white p-1">{{ country.translations['spa'].common }}</span>
-                <span class="bagde bg-primary ml-1 text-white p-1">{{ country.translations['por'].common }}</span>
-                <span class="bagde bg-primary ml-1 text-white p-1">{{ country.translations['ita'].common }}</span>
+            <div class="d-flex flex-wrap justify-content-around justify-content-md-start">
+                <span class="bagde bg-primary m-2 ms-0 text-white p-1">{{ country.translations['spa'].common }}</span>
+                <span class="bagde bg-primary m-2 ms-0 text-white p-1">{{ country.translations['por'].common }}</span>
+                <span class="bagde bg-primary m-2 ms-0 text-white p-1">{{ country.translations['ita'].common }}</span>
             </div>
         </div>
     </div>
