@@ -13,10 +13,10 @@ class="no-results mt-4"
             <tr>
                 <th class="bg-transparent text-light"> </th>
                 <th class="bg-transparent text-light">Icon </th>
-                <th class="bg-transparent text-light d-none">Flags </th>
+                <th class="bg-transparent text-light d-none d-md-table-cell">Flags </th>
                 <th class="bg-transparent text-light">Name </th>
-                <th class="bg-transparent text-light d-none">Capital </th>
-                <th class="bg-transparent text-light d-none">Population</th>
+                <th class="bg-transparent text-light d-none d-lg-table-cell">Capital </th>
+                <th class="bg-transparent text-light d-none d-lg-table-cell">Population</th>
                 <th class="bg-transparent text-light"></th>
             </tr>
         </thead>
@@ -24,10 +24,10 @@ class="no-results mt-4"
             <tr *ngFor="let country of countries, let i = index">
                 <td class="bg-transparent text-light"> {{ i + 1 }} </td>
                 <td class="bg-transparent text-light"> {{ country.flag }} </td>
-                <td class="bg-transparent text-light d-none"> <img [src]="country.flags.svg" [alt]="country.name.common"> </td>
+                <td class="bg-transparent text-light d-none d-md-table-cell"> <img [src]="country.flags.svg" [alt]="country.name.common"> </td>
                 <td class="bg-transparent text-light"> {{ country.name.common }} </td>
-                <td class="bg-transparent text-light d-none"> {{ country.capital }} </td>
-                <td class="bg-transparent text-light d-none"> {{ country.population }} </td>
+                <td class="bg-transparent text-light d-none d-lg-table-cell"> {{ country.capital }} </td>
+                <td class="bg-transparent text-light d-none d-lg-table-cell"> {{ country.population }} </td>
                 <td class="bg-transparent text-light"> <a [routerLink]="['/countries/by', country.cca3 ]" routerLinkActive="router-link-active" >See more</a> </td>
             </tr>
         </tbody>

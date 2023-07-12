@@ -3,10 +3,10 @@
 
 <div class="row">
     <div class="col mb-4">
-        <ul class="nav nav-pills d-flex justify-content-around">
+        <ul class="nav nav-tabs d-flex justify-content-around ">
             <li class="nav-item" *ngFor="let region of regions" >
                 <button 
-                class="nav-link" 
+                class="nav-link text-lite" 
                 [ngClass]="{active: selectedRegion === region}" 
                 (click)="onSearchByRegion(region)"> {{ region }} </button>
             </li>
