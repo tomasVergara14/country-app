@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CountriesService } from '../../services/countries.service';
 import { Country } from '../../interfaces/country';
+import { Subscription } from 'rxjs';
 
 
 export type Region = 'Africa' | 'Americas' | 'Asia' | 'Europe' | 'Oceania' | ''
@@ -12,7 +13,7 @@ export type Region = 'Africa' | 'Americas' | 'Asia' | 'Europe' | 'Oceania' | ''
 })
 
 
-export class ByRegionPageComponent implements OnInit {
+export class ByRegionPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private countriesService: CountriesService,
@@ -21,6 +22,7 @@ export class ByRegionPageComponent implements OnInit {
   public countries:Country[] = [];
   public regions: Region[] = ['Africa','Americas', 'Asia', 'Europe', 'Oceania'];
   public selectedRegion ?: Region;
+  public subscription?: Subscription;
 
   ngOnInit(): void {
     this.countries = this.countriesService.cacheStore.byRegion.countries;
@@ -31,11 +33,14 @@ export class ByRegionPageComponent implements OnInit {
 
     this.selectedRegion = region;
 
-    this.countriesService.onSearchRegionCountries(region).subscribe( countries=>{
+    this.subscription = this.countriesService.onSearchRegionCountries(region).subscribe( countries=>{
       this.countries = countries;
     })
-    console.log(this.countries)
   }
 
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
 
 }

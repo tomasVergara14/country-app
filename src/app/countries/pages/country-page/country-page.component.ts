@@ -11,7 +11,7 @@ import { Country } from '../../interfaces/country';
 })
 export class CountryPageComponent implements OnInit {
 
-  public country?: Country                              // Al principio es null por eso '?'
+  public country?: Country                              
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,7 +25,7 @@ export class CountryPageComponent implements OnInit {
       switchMap( ({ id }) => this.countriesService.onSearchCountry( id ) ),
       catchError(error => {return of(null)})
     )
-    .subscribe( country =>{                                    // Recibe ya la info procesada por el metodo y devuelve o null o un pais
+    .subscribe( country =>{                                    
       
       if(!country) return this.router.navigateByUrl('');
 

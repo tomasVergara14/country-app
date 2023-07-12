@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Country } from '../../interfaces/country';
 import { CountriesService } from '../../services/countries.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'countries-by-country-page',
   templateUrl: './by-country-page.component.html',
   styleUrls: ['./by-country-page.component.scss']
 })
-export class ByCountryPageComponent implements OnInit {
+export class ByCountryPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private countriesService: CountriesService,
@@ -16,6 +17,7 @@ export class ByCountryPageComponent implements OnInit {
   public countries:Country[] = [];
   public termSearched?:string;
   public isLoading : boolean = false;
+  public subscriptions?: Subscription;
 
   ngOnInit(): void {
     this.countries = this.countriesService.cacheStore.byCountry.countries;
@@ -25,11 +27,16 @@ export class ByCountryPageComponent implements OnInit {
 
   public onSearchByCountry( term: string ):void{
     this.isLoading = true;
-    this.countriesService.onSearchRestCountries(term).subscribe( countries=>{
+    this.subscriptions = this.countriesService.onSearchRestCountries(term).subscribe( countries=>{
       this.isLoading = false;
       this.countries = countries;
       this.termSearched = term;
     })
+  }
+
+
+  ngOnDestroy(): void {
+    this.subscriptions?.unsubscribe();
   }
 
 }
